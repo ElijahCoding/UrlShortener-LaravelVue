@@ -47,3 +47,16 @@ Open a new terminal and run Horizon Queue
     `php artisan horizon`
 
 You can now access the server at `http://localhost:8000`
+
+Supervisor file
+
+`[program:laravel_horizon]
+ process_name=%(program_name)s_%(process_num)02d
+ command=php /home/ubuntu/your-project-folder/artisan horizon
+ autostart=true
+ autorestart=true
+ redirect_stderr=true
+ user=www-data
+ stdout_logfile=/home/ubuntu/your-project-folder/storage/horizon.log
+ stdout_logfile_maxbytes=10MB
+ logfile_backups=10`
