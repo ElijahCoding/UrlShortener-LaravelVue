@@ -1,12 +1,6 @@
 <template>
-    <div class="flex flex-col flex-1 h-screen overflow-y-hidden" v-if="authUser">
-        <Nav />
-
-        <div class="flex overflow-y-hidden flex-1">
-            <div class="overflow-x-hidden w-2/3">
-                <router-view :key="$route.fullPath"></router-view>
-            </div>
-        </div>
+    <div v-if="authUser">
+        <router-view :key="$route.fullPath"></router-view>
     </div>
 </template>
 
