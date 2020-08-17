@@ -5,14 +5,10 @@
 </template>
 
 <script>
-import Nav from './Nav';
 import { mapGetters } from 'vuex';
 
 export default {
     name: "App",
-    components: {
-        Nav,
-    },
     mounted() {
         this.$store.dispatch('fetchAuthUser');
     },

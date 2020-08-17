@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 
-Route::middleware('auth:api')->group(function () {
+Route::group(['middleware' => 'auth:api'], function () {
     Route::get('auth-user', 'AuthUserController@show');
 
     Route::group(['namespace' => 'Link'], function () {
