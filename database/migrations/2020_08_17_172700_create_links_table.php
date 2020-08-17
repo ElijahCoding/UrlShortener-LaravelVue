@@ -17,7 +17,7 @@ class CreateLinksTable extends Migration
             $table->id();
             $table->unsignedBigInteger('user_id')->index();
             $table->string('local_link')->unique();
-            $table->string('link')->index();
+            $table->string('link')->index()->unique();
             $table->timestamps();
 
             $table->foreign('user_id')->references('id')->on('users')->onDelete('CASCADE');

@@ -3,7 +3,8 @@
 namespace App\Http\Controllers\Link;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\Link\LinkStoreRequest;
+use App\Models\Link;
 
 class LinkController extends Controller
 {
@@ -12,23 +13,8 @@ class LinkController extends Controller
 
     }
 
-    public function store(Request $request)
+    public function store(LinkStoreRequest $request)
     {
-        //
-    }
-
-    public function show($id)
-    {
-        //
-    }
-
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    public function destroy($id)
-    {
-        //
+        return auth()->user()->links()->create($request->validated());
     }
 }
