@@ -16,7 +16,7 @@ class CreateLinksTable extends Migration
         Schema::create('links', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id')->index();
-            $table->string('local_link')->unique();
+            $table->string('local_link')->index()->unique();
             $table->string('link')->index()->unique();
             $table->timestamps();
 

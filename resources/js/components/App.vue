@@ -5,24 +5,30 @@
 </template>
 
 <script>
-import { mapGetters } from 'vuex';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
     name: "App",
     mounted() {
-        this.$store.dispatch('fetchAuthUser');
+        this.fetchAuthUser()
     },
     created() {
-        this.$store.dispatch('setPageTitle', this.$route.meta.title);
+        this.setPageTitle(this.$route.meta.title)
     },
     computed: {
         ...mapGetters({
-            authUser: 'authUser',
+            authUser: 'user/authUser',
         }),
+    },
+    methods: {
+        ...mapActions({
+            setPageTitle: 'setPageTitle',
+            fetchAuthUser: 'user/fetchAuthUser',
+        })
     },
     watch: {
         $route(to, from) {
-            this.$store.dispatch('setPageTitle', to.meta.title);
+            this.setPageTitle(to.meta.title)
         }
     }
 }

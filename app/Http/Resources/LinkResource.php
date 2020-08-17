@@ -14,6 +14,12 @@ class LinkResource extends JsonResource
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'id' => $this->id,
+            'link' => $this->link,
+            'local_link' => $this->local_link,
+            'created_at_for_human' => $this->created_at->diffForHumans(),
+            'created_at' => $this->created_at->format('Y-m-d')
+        ];
     }
 }

@@ -9,5 +9,6 @@ Route::group(['middleware' => 'auth:api'], function () {
         Route::apiResources([
             '/links' => 'LinkController',
         ]);
+//        Route::post('/link/check', 'LinkController@check')->name('links.check');
     });
 });

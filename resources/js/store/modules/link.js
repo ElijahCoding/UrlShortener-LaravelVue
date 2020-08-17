@@ -1,19 +1,27 @@
-const state = {
-
-};
-
-const getters = {
-
-};
-
-const actions = {
-
-};
-
-const mutations = {
-
-};
-
 export default {
-    state, getters, actions, mutations,
+    namespaced: true,
+    state: {
+        links: [],
+    },
+    mutations: {
+        setLinks (state, data) {
+            state.links = data
+        },
+    },
+    getters: {
+        links (state) {
+            return state.links
+        }
+    },
+    actions: {
+        async createLink({ commit, dispatch }, payload) {
+            await axios.post('/api/links', payload)
+            dispatch('getLinks')
+        },
+
+        async getLinks({ commit }) {
+            let response = await axios.get('/api/links')
+            commit('setLinks', response.data.data)
+        },
+    }
 }

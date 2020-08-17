@@ -1,7 +1,10 @@
 import Vue from 'vue';
 import router from './router';
 import App from './components/App';
+import Vuelidate from 'vuelidate'
 import store from './store';
+
+Vue.use(Vuelidate)
 
 require('./bootstrap');
 

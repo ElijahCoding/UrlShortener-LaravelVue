@@ -1,13 +1,32 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
-import Link from './modules/link';
-import User from './modules/user';
-import Title from './modules/title';
+import link from './modules/link';
+import user from './modules/user';
 
 Vue.use(Vuex);
 
 export default new Vuex.Store({
     modules: {
-        Link, User, Title
+        link, user
+    },
+    state: {
+        title: 'Welcome',
+    },
+    mutations: {
+        setTitle(state, title) {
+            state.title = title;
+
+            document.title = state.title;
+        }
+    },
+    getters: {
+        pageTitle: state => {
+            return state.title;
+        }
+    },
+    actions: {
+        setPageTitle({commit, state}, title) {
+            commit('setTitle', title);
+        }
     },
 });
