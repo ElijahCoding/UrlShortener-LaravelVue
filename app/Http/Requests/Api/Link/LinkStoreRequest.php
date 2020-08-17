@@ -1,8 +1,8 @@
 <?php
 
-namespace App\Http\Requests\Link;
+namespace App\Http\Requests\Api\Link;
 
-use Illuminate\Foundation\Http\FormRequest;
+use App\Http\Requests\Api\FormRequest;
 
 class LinkStoreRequest extends FormRequest
 {
@@ -24,8 +24,8 @@ class LinkStoreRequest extends FormRequest
     public function rules()
     {
         return [
-            'link' => 'required|url|unique:links',
-            'local_link' => 'required|url|unique:links',
+            'link' => 'required|url|unique:links,link',
+            'local_link' => 'required|url|unique:links,local_link',
         ];
     }
 }
